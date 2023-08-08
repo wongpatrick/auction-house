@@ -16,8 +16,8 @@ type (
 		SellerId      *int    `json:"sellerId"`
 		StartingPrice *int    `json:"startingPrice"`
 		BuyoutPrice   *int    `json:"buyoutPrice"`
-		CreatedAt     *string `json:"createdAt"` // For simplicity sake, would use DateTime
-		EndedAt       *string `json:"endedAt"`   // For simplicity sake, would use DateTime
+		CreatedAt     *string `json:"createdAt"` // For simplicity sake
+		EndedAt       *string `json:"endedAt"`   // For simplicity sake
 		Status        *Status `json:"status"`
 	}
 
