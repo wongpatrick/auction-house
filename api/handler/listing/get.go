@@ -11,7 +11,7 @@ import (
 
 // GET listing
 // @Summary      fetches listing
-// @Description  get listing based off of the user's query params
+// @Description  get listing based on the user's query params
 // @Tags         listing
 // @Accept       json
 // @Produce      json
