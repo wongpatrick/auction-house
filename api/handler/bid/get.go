@@ -11,7 +11,7 @@ import (
 
 // GET bid
 // @Summary      fetches bid
-// @Description  get bid based off of the user's query params
+// @Description  get bid based on the user's query params
 // @Tags         bid
 // @Accept       json
 // @Produce      json
@@ -20,7 +20,7 @@ import (
 // @Failure      400  {object}  httputil.HTTPError
 // @Failure      404  {object}  httputil.HTTPError
 // @Failure      500  {object}  httputil.HTTPError
-// @Router       /listing [get]
+// @Router       /bid [get]
 func GET(c *gin.Context) {
 	log.Printf("FETCH")
 	var bidParams model.BidSearchParams
