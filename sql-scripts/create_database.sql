@@ -1,11 +1,8 @@
 CREATE SCHEMA `auction` ;
 
--- ------------------------------------------------------------------------------------
--- The following tables are player/game data that are spread across different databases
--- ------------------------------------------------------------------------------------
--- Quick Note: 
---    - I created these tables more for my sake visually so I could see how they are linked
---    - the foriegn key is for testing purposes and not needed if it is across different databases
+-- -----------------------------------------------------------------------------------------------
+-- The following tables are player/game data in theory should be spread across different databases
+-- -----------------------------------------------------------------------------------------------
 
 CREATE TABLE `auction`.`user` (
   `user_id` INT NOT NULL,
