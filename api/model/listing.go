@@ -22,13 +22,13 @@ type (
 	}
 
 	ListingParams struct {
-		Id        *[]int
-		ItemId    *[]int
-		SellerId  *int
-		CreatedAt *string
-		EndedAt   *string
-		Name      *[]string
-		Rarity    *[]string
-		ItemType  *[]string
+		Id         *[]int
+		ItemId     *[]int
+		SellerId   *int
+		CreatedAt  *string
+		EndedAt    *string
+		Name       *[]string
+		RarityId   *[]int
+		ItemTypeId *[]int
 	}
 )

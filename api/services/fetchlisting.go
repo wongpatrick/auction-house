@@ -9,7 +9,12 @@ import (
 func FetchListing(listing model.ListingParams) ([]model.Listing, error) {
 	// TODO: Query for specific item ID based off if user wants rarity/item type/name
 	// Below is an example
-	itemIds, err := repository.FetchItem(listing)
+	itemParams := model.ItemParams{
+		Id:         listing.ItemId,
+		RarityId:   listing.RarityId,
+		ItemTypeId: listing.ItemTypeId,
+	}
+	itemIds, err := repository.FetchItem(itemParams)
 	if err != nil {
 		// LOG
 		return []model.Listing{}, err

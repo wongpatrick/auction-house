@@ -10,7 +10,6 @@ CREATE TABLE `auction`.`user` (
   `money` INT NULL,
   PRIMARY KEY (`user_id`));
 
-
 CREATE TABLE `auction`.`rarity` (
   `rarity_id` INT NOT NULL,
   `name` VARCHAR(45) NULL,

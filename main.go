@@ -52,16 +52,16 @@ func Logger() gin.HandlerFunc {
 func main() {
 	r := gin.Default()
 	r.Use(Logger())
-	r.use(AuthenticationMiddleware())
+	// r.use(AuthenticationMiddleware())
 	r.GET("/ping", ping.GET)
 
 	r.GET("/listing", listing.GET)
-	r.POST("/listing", listing.POST)
-	r.PATCH("/listing", listing.PATCH)
-	r.DELETE("/listing", listing.DELETE)
+	// r.POST("/listing", listing.POST)
+	// r.PATCH("/listing", listing.PATCH)
+	// r.DELETE("/listing", listing.DELETE)
 
 	r.GET("/bid", bid.GET)
-	r.POST("/bid", bid.POST)
+	// r.POST("/bid", bid.POST)
 
 	r.Run() // listen and serve on localhost:8080
 }
