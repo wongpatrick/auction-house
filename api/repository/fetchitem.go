@@ -9,14 +9,15 @@ import (
 )
 
 // This in theory should be in a different service
-func FetchItem(listingParams model.ListingParams) ([]int, error) {
+// TODO: Double check if i need to filter for other items as well
+func FetchItem(itemParams model.ItemParams) ([]int, error) {
 	var db, errdb = config.Connectdb()
 	if errdb != nil {
 		return nil, errdb
 	}
 	defer db.Close()
 
-	query := buildItemQuery(listingParams)
+	query := buildItemQuery(itemParams)
 	log.Printf(query.ToSql())
 	rows, err := query.RunWith(db).Query()
 
@@ -25,42 +26,37 @@ func FetchItem(listingParams model.ListingParams) ([]int, error) {
 		return nil, err
 	}
 
-	bid := []model.Bid{}
+	items := []int{}
 
 	for rows.Next() {
-		var r model.Bid
+		var r model.Item
 		err = rows.Scan(
 			&r.Id,
-			&r.ListingId,
-			&r.BidderId,
-			&r.BidAmount,
-			&r.CreatedAt,
-			&r.IsBuyout,
 		)
 		if err != nil {
 			log.Printf("Scan: %v", err)
 			return nil, err
 		}
-		bid = append(bid, r)
+		items = append(items, r.Id)
 
 	}
 
-	return bid, nil
+	return items, nil
 }
 
-func buildItemQuery(itemParams model.ListingParams) sq.SelectBuilder {
+func buildItemQuery(itemParams model.ItemParams) sq.SelectBuilder {
 	query := sq.Select("*").From("item")
 
-	if bidParams.Id != nil && len(*bidParams.Id) > 0 {
-		query.Where(sq.Eq{"bid_id": bidParams.Id})
+	if itemParams.Id != nil && len(*itemParams.Id) > 0 {
+		query.Where(sq.Eq{"item_id": itemParams.Id})
 	}
 
-	if bidParams.ListingId != nil {
-		query.Where(sq.Eq{"listing_id": bidParams.ListingId})
+	if itemParams.RarityId != nil {
+		query.Where(sq.Eq{"rarity_id": itemParams.RarityId})
 	}
 
-	if bidParams.BidderId != nil {
-		query.Where(sq.Eq{"bidder_id": bidParams.BidderId})
+	if itemParams.ItemTypeId != nil {
+		query.Where(sq.Eq{"item_type_id": itemParams.ItemTypeId})
 	}
 
 	return query
