@@ -7,7 +7,7 @@ import (
 )
 
 // Post buyer bid after validating
-func BuyerBidding(player model.User, bid model.Bid) (bool, error) {
+func BuyerBidding(bid model.Bid) (bool, error) {
 	listingParams := model.ListingParams{
 		Id: &[]int{bid.ListingId},
 	}
@@ -20,6 +20,11 @@ func BuyerBidding(player model.User, bid model.Bid) (bool, error) {
 	if len(listing) != 1 {
 		errMsg := errors.New("There is either no listing or more than 1 was found")
 		return false, errMsg
+	}
+
+	player, err := repository.FetchPlayer(bid.BidderId)
+	if err != nil {
+		return false, err
 	}
 
 	validateErr := ValidateBidForBidding(player, listing[0], bid)
