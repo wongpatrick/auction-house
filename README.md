@@ -9,7 +9,7 @@ Auction House Service is an example web API I would envision what a basic auctio
 
 ## Run the service
 
-    go run
+    go run .
 
 ## Run the tests
 
@@ -22,7 +22,7 @@ The REST API for the Auction House service is described below.
 ### Request
 ```GET \bid\ ```
 
-    curl -i -H 'Accept: application/json' http://localhost/bid/
+    curl -i -H 'Accept: application/json' http://localhost:8080/bid/
 
 ## Post a Bid
 ### Request
