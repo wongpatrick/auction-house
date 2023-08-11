@@ -3,11 +3,26 @@ package services
 import (
 	"auction-house-service/api/model"
 	"auction-house-service/api/repository"
+	"errors"
 )
 
 // Post buyer bid after validating
-func BuyerBidding(player model.User, listing model.Listing, bid model.Bid) (bool, error) {
-	validateErr := ValidateBidForBidding(player, listing, bid)
+func BuyerBidding(player model.User, bid model.Bid) (bool, error) {
+	listingParams := model.ListingParams{
+		Id: &[]int{bid.ListingId},
+	}
+	listing, err := FetchListing(listingParams)
+
+	if err != nil {
+		return false, err
+	}
+
+	if len(listing) != 1 {
+		errMsg := errors.New("There is either no listing or more than 1 was found")
+		return false, errMsg
+	}
+
+	validateErr := ValidateBidForBidding(player, listing[0], bid)
 	if validateErr != nil {
 		return false, validateErr
 	}

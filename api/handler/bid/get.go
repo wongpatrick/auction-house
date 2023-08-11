@@ -15,7 +15,7 @@ import (
 // @Tags         bid
 // @Accept       json
 // @Produce      json
-// @Param        q    query     model.BidParams
+// @Param        q    query     model.BidSearchParams
 // @Success      200  {array}   model.Bid
 // @Failure      400  {object}  httputil.HTTPError
 // @Failure      404  {object}  httputil.HTTPError
