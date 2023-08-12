@@ -10,7 +10,7 @@ import (
 )
 
 // POST bid
-// @Summary      Create a bid bid
+// @Summary      Create a bid
 // @Description  Create bid based on the user's bid request
 // @Tags         bid
 // @Accept       json
@@ -23,15 +23,15 @@ import (
 // @Router       /bid [get]
 func POST(c *gin.Context) {
 	log.Printf("POST")
-	var bidParams model.BidSearchParams
-	if c.ShouldBind(&bidParams) == nil {
+	var bid model.Bid
+	if c.ShouldBind(&bid) == nil {
 		// LOG
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": "Bad Request",
 		})
 		return
 	}
-	data, err := services.FetchBid(bidParams)
+	data, err := services.BuyerBidding(bid)
 	if err != nil {
 		// LOG
 		c.JSON(http.StatusInternalServerError, gin.H{
