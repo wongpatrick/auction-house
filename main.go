@@ -18,7 +18,7 @@ package main
 // @securityDefinitions.basic  BasicAuth
 
 // @externalDocs.description  Auction House Service OpenAPI
-// @externalDocs.url          https://inflection.io/resources/open-api/
+// @externalDocs.url          
 
 import (
 	"auction-house-service/api/handler/bid"
