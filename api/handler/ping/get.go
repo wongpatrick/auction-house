@@ -1,7 +1,7 @@
 package ping
 
 import (
-	"auction-house-service/api/config"
+	"auction-house-service/api/dbconfig"
 	"log"
 	"net/http"
 
@@ -20,15 +20,16 @@ import (
 // @Failure      500  {object}  httputil.HTTPError
 // @Router       /ping [get]
 func GET(c *gin.Context) {
-	var db, errdb = config.Connectdb()
-	if errdb != nil {
-		log.Printf(errdb.Error())
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Missing Connection",
-		})
-		return
-	}
-	defer db.Close()
+	_ = dbconfig.DB
+	// TODO: Select something to see if you can query as a ping
+	// if errdb != nil {
+	// 	log.Printf(errdb.Error())
+	// 	c.JSON(http.StatusOK, gin.H{
+	// 		"message": "Missing Connection",
+	// 	})
+	// 	return
+	// }
+	// defer db.Close()
 	log.Printf("PING")
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Success Connection",

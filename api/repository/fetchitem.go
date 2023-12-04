@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"auction-house-service/api/config"
+	"auction-house-service/api/dbconfig"
 	"auction-house-service/api/model"
 	"log"
 
@@ -11,11 +11,7 @@ import (
 // This in theory should be in a different service
 // TODO: Double check if i need to filter for other items as well
 func FetchItem(itemParams model.ItemParams) ([]int, error) {
-	var db, errdb = config.Connectdb()
-	if errdb != nil {
-		return nil, errdb
-	}
-	defer db.Close()
+	db := dbconfig.DB
 
 	query := buildItemQuery(itemParams)
 	log.Printf(query.ToSql())

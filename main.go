@@ -21,6 +21,7 @@ package main
 // @externalDocs.url          https://inflection.io/resources/open-api/
 
 import (
+	"auction-house-service/api/dbconfig"
 	"auction-house-service/api/handler/bid"
 	"auction-house-service/api/handler/listing"
 	"auction-house-service/api/handler/ping"
@@ -50,6 +51,8 @@ func Logger() gin.HandlerFunc {
 }
 
 func main() {
+
+	dbconfig.Connectdb()
 	r := gin.Default()
 	r.Use(Logger())
 	// r.use(AuthenticationMiddleware())

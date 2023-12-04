@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"auction-house-service/api/config"
+	"auction-house-service/api/dbconfig"
 	"auction-house-service/api/model"
 	"log"
 
@@ -10,11 +10,7 @@ import (
 
 // This in theory should be in a different service
 func FetchPlayer(userId int) (model.User, error) {
-	var db, errdb = config.Connectdb()
-	if errdb != nil {
-		return model.User{}, errdb
-	}
-	defer db.Close()
+	db := dbconfig.DB
 
 	query := buildPlayerQuery(userId)
 	log.Printf(query.ToSql())

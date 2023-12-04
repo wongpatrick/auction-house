@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"auction-house-service/api/config"
+	"auction-house-service/api/dbconfig"
 	"auction-house-service/api/model"
 	"log"
 
@@ -9,11 +9,7 @@ import (
 )
 
 func FetchListing(listingParams model.ListingParams) ([]model.Listing, error) {
-	var db, errdb = config.Connectdb()
-	if errdb != nil {
-		return nil, errdb
-	}
-	defer db.Close()
+	db := dbconfig.DB
 
 	query := buildListingQuery(listingParams)
 	log.Printf(query.ToSql())

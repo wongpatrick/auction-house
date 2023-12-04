@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"auction-house-service/api/dbconfig"
 	"auction-house-service/api/model"
 
 	sq "github.com/Masterminds/squirrel"
@@ -8,6 +9,8 @@ import (
 
 func PatchListing(listing model.Listing) error {
 	// TODO: UPDATE DB with listing values
+	_ = dbconfig.DB
+
 	_ = buildListingUpdate(listing)
 	return nil
 }
