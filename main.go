@@ -3,11 +3,11 @@ package main
 // @title           Auction House Service
 // @version         1.0
 // @description     This is an auction house service.
-// @termsOfService  https://www.inflexion.io/
+// @termsOfService  
 
 // @contact.name   Auction House API Support
-// @contact.url    https://www.inflexion.io/
-// @contact.email  support@inflection.io
+// @contact.url    
+// @contact.email  
 
 // @license.name  Apache 2.0
 // @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
@@ -18,7 +18,7 @@ package main
 // @securityDefinitions.basic  BasicAuth
 
 // @externalDocs.description  Auction House Service OpenAPI
-// @externalDocs.url          https://inflection.io/resources/open-api/
+// @externalDocs.url          
 
 import (
 	"auction-house-service/api/dbconfig"
